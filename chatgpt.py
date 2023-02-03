@@ -6,7 +6,7 @@ def get_article(keyword, paragraph, apikey):
 
     response = openai.Completion.create(
         model="text-davinci-003",
-        prompt='i want to make article for seo purpose and ranking on google search engine.\ncreate an article about \"' + str(keyword) + '\" in relaxed english language.\nthe article consist of at least ' + str(paragraph) + ' paragraphs.\ncreate in html file form without html and body tag.\nfirst title using <h1> tag.\nparagraphs must use <p> tags.',
+        prompt='i want to make article for seo purpose and ranking on google search engine.\ncreate an article about \"' + str(keyword) + '\" in relaxed english language.\nthe article consist of at least ' + str(paragraph) + ' paragraphs.\ncreate in html file form without html and body tag.\nfirst title using <h1> tag.\ninsert <br> tag after first title.\nsub title using <h2> tags.\nparagraphs must use <p> tags.',
         temperature=0.7,
         max_tokens=500,
         top_p=1,

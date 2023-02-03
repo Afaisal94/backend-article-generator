@@ -18,13 +18,18 @@ def articles():
         paragraph = request.form.get('paragraph')
         apikey = request.form.get('apikey')
 
-        content = get_article(keyword, paragraph, apikey)
+        # Scrape Image & Content
         image = get_image(keyword)
+        content = get_article(keyword, paragraph, apikey)
+
+        # Setup Image & Content
+        newImage = '<center><img src="' + image + '" alt="' + keyword + '" style="margin-top:10px; margin-bottom:10px; width:500px"></center>'
+        newContent = content.replace('<br>', newImage)
 
         input = {
             'title': keyword,
             'image': image,
-            'content': content
+            'content': newContent
         }
 
         with open('articles.json', 'r+') as file:
@@ -47,5 +52,5 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 # set FLASK_APP=app.py
-# set FLASK_DEBUG=development
+# set FLASK_ENV=development
 # flask run
